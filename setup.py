@@ -4,9 +4,7 @@ setup(
     name="forest_app",
     version="0.1.0",
     packages=find_packages(),
-    install_requires=[
-        "requests>=2.25.0"
-    ],
+    install_requires=["requests>=2.25.0"],
     author="Your Name",
     author_email="your.email@example.com",
     description="Unofficial Python client for Forest App API",

@@ -49,6 +49,49 @@ class User:
     region: str
     language: str
     timezone: int
+    remember_token: str
+    device_id: Optional[str] = None
+    facebook_id: Optional[str] = None
+    share_count: int = 0
+    weibo_id: Optional[str] = None
+    avatar: Optional[str] = None
+    has_sn: bool = False
+    reset_sent_at: Optional[datetime] = None
+    device_token: Optional[str] = None
+    platform: Optional[str] = None
+    not_shown_in_global: bool = False
+    not_shown_in_friend: bool = False
+    cheating: bool = False
+    price_tier: Optional[int] = None
+    boost_end_time: Optional[datetime] = None
+    boost_start_time: Optional[datetime] = None
+    boost_rate: Optional[float] = None
+    avatar_attach_file_name: Optional[str] = None
+    avatar_attach_content_type: Optional[str] = None
+    avatar_attach_file_size: Optional[int] = None
+    avatar_attach_updated_at: Optional[datetime] = None
+    xmas2016_redeemed: bool = False
+    certificate_name: Optional[str] = None
+    is_using_new_friend_system: bool = False
+    is_allow_add_friend_from_profile: bool = False
+    banned: bool = False
+    survey_cake_reward_state: str = "uncompleted"
+    disabled: bool = False
+    receipt_system_premium_rid: Optional[int] = None
+    converted_to_full_at: Optional[datetime] = None
+    registration_distribution: Optional[str] = None
+    total_ms: Optional[int] = None
+    intl_id: Optional[str] = None
+    migration_completed_at: Optional[datetime] = None
+    is_tracking_allowed: bool = False
+    is_tracking_allowed_updated_at: Optional[datetime] = None
+    oauth_application_user_id: Optional[int] = None
+    is_guest: bool = False
+    age_screen_code_id: Optional[int] = None
+
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
 
 
 @dataclass
@@ -61,6 +104,7 @@ class Plant:
     is_success: bool = True
     trees: List[Tree] = None
     id: Optional[int] = None
+    user_id: Optional[int] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
     mode: str = "countdown"
@@ -89,6 +133,7 @@ class Plant:
         trees = [Tree(**tree) for tree in data.get("trees", [])]
         return cls(
             id=data.get("id"),
+            user_id=data.get("user_id"),
             start_time=datetime.fromisoformat(data["start_time"].rstrip("Z")),
             end_time=datetime.fromisoformat(data["end_time"].rstrip("Z")),
             note=data.get("note", ""),
