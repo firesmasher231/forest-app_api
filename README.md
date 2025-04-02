@@ -4,10 +4,10 @@ Unofficial Python client for Forest App API. This package allows you to interact
 
 ## Installation
 
-{code block start}
+```shell
 pip install -r requirements.txt
 pip install -e .
-{code block end}
+```
 
 ## Getting Your Remember Token
 
